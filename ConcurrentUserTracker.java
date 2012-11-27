@@ -8,7 +8,9 @@ public class ConcurrentUserTracker implements HttpSessionListener {
     users++;
   }
   public void sessionDestroyed(HttpSessionEvent e) {
-    users--;
+    if(users > 0) {
+      users--;
+    }
   }
   public static int getConcurrentUsers() {
     return users;
